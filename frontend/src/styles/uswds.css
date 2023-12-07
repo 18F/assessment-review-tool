@@ -8,7 +8,7 @@
 ========================================
 ========================================
 ----------------------------------------
-USWDS 2.12.2
+USWDS 2.14.0
 ----------------------------------------
 GENERAL SETTINGS
 ----------------------------------------
@@ -88,7 +88,7 @@ Icons
 ========================================
 ========================================
 ----------------------------------------
-USWDS 2.12.2
+USWDS 2.14.0
 ----------------------------------------
 TYPOGRAPHY SETTINGS
 ----------------------------------------
@@ -375,7 +375,7 @@ none:    none
 ========================================
 ========================================
 ----------------------------------------
-USWDS 2.12.2
+USWDS 2.14.0
 ----------------------------------------
 COLOR SETTINGS
 ----------------------------------------
@@ -408,7 +408,7 @@ General colors
 ========================================
 ========================================
 ----------------------------------------
-USWDS 2.12.2
+USWDS 2.14.0
 ----------------------------------------
 SPACING SETTINGS
 ----------------------------------------
@@ -478,7 +478,7 @@ Site
 ========================================
 ========================================
 ----------------------------------------
-USWDS 2.12.2
+USWDS 2.14.0
 ----------------------------------------
 UTILITIES SETTINGS
 ----------------------------------------
@@ -526,7 +526,7 @@ Values
 ========================================
 ========================================
 ----------------------------------------
-USWDS 2.12.2
+USWDS 2.14.0
 ----------------------------------------
 COMPONENT SETTINGS
 ----------------------------------------
@@ -543,6 +543,14 @@ Functions
 /*
 ========================================
 General-purpose functions
+----------------------------------------
+*/
+/*
+----------------------------------------
+divide()
+----------------------------------------
+Divides one number by another, to a
+specified precision.
 ----------------------------------------
 */
 /*
@@ -611,13 +619,6 @@ Leaves bools as is
 remove()
 ----------------------------------------
 Remove a value from a list
-----------------------------------------
-*/
-/*
-----------------------------------------
-strunquote()
-----------------------------------------
-Unquote a string
 ----------------------------------------
 */
 /*
@@ -863,16 +864,6 @@ USWDS standard values.
 
 Used to build other standard utility
 functions and mixins.
-----------------------------------------
-*/
-/*
-----------------------------------------
-pow()
-----------------------------------------
-Raises a unitless number to the power
-of another unitless number
-
-Includes helper functions
 ----------------------------------------
 */
 /*
@@ -1480,6 +1471,11 @@ System magic numbers for color contrast
 */
 /*
 ----------------------------------------
+Luminance color component values
+----------------------------------------
+*/
+/*
+----------------------------------------
 Build the project type scale map
 ----------------------------------------
 */
@@ -1623,7 +1619,9 @@ through all possible variants
   border-spacing: 0;
   color: #1b1b1b;
   margin: 1.25rem 0;
-  text-align: left; }
+  text-align: left;
+  /* stylelint-disable selector-class-pattern */
+  /* stylelint-enable selector-class-pattern */ }
   .usa-table thead th, .usa-prose > table thead th {
     background-clip: padding-box;
     color: #1b1b1b;
@@ -1845,15 +1843,17 @@ through all possible variants
     background-color: #e1f3f8;
     color: #1b1b1b; }
 
-.usa-table--borderless thead th, .usa-prose > .usa-table--borderless thead th {
-  background-color: transparent;
-  border-top: 0;
-  color: #1b1b1b; }
-  .usa-table--borderless thead th[aria-sort] {
+.usa-table--borderless thead, .usa-prose > .usa-table--borderless thead {
+  /* stylelint-disable selector-class-pattern */
+  /* stylelint-enable selector-class-pattern */ }
+  .usa-table--borderless thead th, .usa-prose > .usa-table--borderless thead th {
+    background-color: transparent;
+    border-top: 0;
     color: #1b1b1b; }
-
-.usa-table--borderless thead th[data-sortable]:not([aria-sort]) .usa-table__header__button:hover .usa-icon > g.unsorted {
-  fill: #1b1b1b; }
+    .usa-table--borderless thead th[aria-sort] {
+      color: #1b1b1b; }
+  .usa-table--borderless thead th[data-sortable]:not([aria-sort]) .usa-table__header__button:hover .usa-icon > g.unsorted {
+    fill: #1b1b1b; }
 
 .usa-table--borderless th, .usa-prose > .usa-table--borderless th,
 .usa-table--borderless td,
@@ -2308,126 +2308,126 @@ template {
 
 /* stylelint-disable */
 @font-face {
-  font-family: Roboto Mono Web;
+  font-family: "Roboto Mono Web";
   font-style: normal;
   font-weight: 300;
   font-display: fallback;
   src: url(../fonts/roboto-mono/roboto-mono-v5-latin-300.woff2) format("woff2"), url(../fonts/roboto-mono/roboto-mono-v5-latin-300.woff) format("woff"), url(../fonts/roboto-mono/roboto-mono-v5-latin-300.ttf) format("truetype"); }
 
 @font-face {
-  font-family: Roboto Mono Web;
+  font-family: "Roboto Mono Web";
   font-style: normal;
   font-weight: 400;
   font-display: fallback;
   src: url(../fonts/roboto-mono/roboto-mono-v5-latin-regular.woff2) format("woff2"), url(../fonts/roboto-mono/roboto-mono-v5-latin-regular.woff) format("woff"), url(../fonts/roboto-mono/roboto-mono-v5-latin-regular.ttf) format("truetype"); }
 
 @font-face {
-  font-family: Roboto Mono Web;
+  font-family: "Roboto Mono Web";
   font-style: normal;
   font-weight: 700;
   font-display: fallback;
   src: url(../fonts/roboto-mono/roboto-mono-v5-latin-700.woff2) format("woff2"), url(../fonts/roboto-mono/roboto-mono-v5-latin-700.woff) format("woff"), url(../fonts/roboto-mono/roboto-mono-v5-latin-700.ttf) format("truetype"); }
 
 @font-face {
-  font-family: Roboto Mono Web;
+  font-family: "Roboto Mono Web";
   font-style: italic;
   font-weight: 300;
   font-display: fallback;
   src: url(../fonts/roboto-mono/roboto-mono-v5-latin-300italic.woff2) format("woff2"), url(../fonts/roboto-mono/roboto-mono-v5-latin-300italic.woff) format("woff"), url(../fonts/roboto-mono/roboto-mono-v5-latin-300italic.ttf) format("truetype"); }
 
 @font-face {
-  font-family: Roboto Mono Web;
+  font-family: "Roboto Mono Web";
   font-style: italic;
   font-weight: 400;
   font-display: fallback;
   src: url(../fonts/roboto-mono/roboto-mono-v5-latin-italic.woff2) format("woff2"), url(../fonts/roboto-mono/roboto-mono-v5-latin-italic.woff) format("woff"), url(../fonts/roboto-mono/roboto-mono-v5-latin-italic.ttf) format("truetype"); }
 
 @font-face {
-  font-family: Roboto Mono Web;
+  font-family: "Roboto Mono Web";
   font-style: italic;
   font-weight: 700;
   font-display: fallback;
   src: url(../fonts/roboto-mono/roboto-mono-v5-latin-700italic.woff2) format("woff2"), url(../fonts/roboto-mono/roboto-mono-v5-latin-700italic.woff) format("woff"), url(../fonts/roboto-mono/roboto-mono-v5-latin-700italic.ttf) format("truetype"); }
 
 @font-face {
-  font-family: Source Sans Pro Web;
+  font-family: "Source Sans Pro Web";
   font-style: normal;
   font-weight: 300;
   font-display: fallback;
   src: url(../fonts/source-sans-pro/sourcesanspro-light-webfont.woff2) format("woff2"), url(../fonts/source-sans-pro/sourcesanspro-light-webfont.woff) format("woff"), url(../fonts/source-sans-pro/sourcesanspro-light-webfont.ttf) format("truetype"); }
 
 @font-face {
-  font-family: Source Sans Pro Web;
+  font-family: "Source Sans Pro Web";
   font-style: normal;
   font-weight: 400;
   font-display: fallback;
   src: url(../fonts/source-sans-pro/sourcesanspro-regular-webfont.woff2) format("woff2"), url(../fonts/source-sans-pro/sourcesanspro-regular-webfont.woff) format("woff"), url(../fonts/source-sans-pro/sourcesanspro-regular-webfont.ttf) format("truetype"); }
 
 @font-face {
-  font-family: Source Sans Pro Web;
+  font-family: "Source Sans Pro Web";
   font-style: normal;
   font-weight: 700;
   font-display: fallback;
   src: url(../fonts/source-sans-pro/sourcesanspro-bold-webfont.woff2) format("woff2"), url(../fonts/source-sans-pro/sourcesanspro-bold-webfont.woff) format("woff"), url(../fonts/source-sans-pro/sourcesanspro-bold-webfont.ttf) format("truetype"); }
 
 @font-face {
-  font-family: Source Sans Pro Web;
+  font-family: "Source Sans Pro Web";
   font-style: italic;
   font-weight: 300;
   font-display: fallback;
   src: url(../fonts/source-sans-pro/sourcesanspro-lightitalic-webfont.woff2) format("woff2"), url(../fonts/source-sans-pro/sourcesanspro-lightitalic-webfont.woff) format("woff"), url(../fonts/source-sans-pro/sourcesanspro-lightitalic-webfont.ttf) format("truetype"); }
 
 @font-face {
-  font-family: Source Sans Pro Web;
+  font-family: "Source Sans Pro Web";
   font-style: italic;
   font-weight: 400;
   font-display: fallback;
   src: url(../fonts/source-sans-pro/sourcesanspro-italic-webfont.woff2) format("woff2"), url(../fonts/source-sans-pro/sourcesanspro-italic-webfont.woff) format("woff"), url(../fonts/source-sans-pro/sourcesanspro-italic-webfont.ttf) format("truetype"); }
 
 @font-face {
-  font-family: Source Sans Pro Web;
+  font-family: "Source Sans Pro Web";
   font-style: italic;
   font-weight: 700;
   font-display: fallback;
   src: url(../fonts/source-sans-pro/sourcesanspro-bolditalic-webfont.woff2) format("woff2"), url(../fonts/source-sans-pro/sourcesanspro-bolditalic-webfont.woff) format("woff"), url(../fonts/source-sans-pro/sourcesanspro-bolditalic-webfont.ttf) format("truetype"); }
 
 @font-face {
-  font-family: Merriweather Web;
+  font-family: "Merriweather Web";
   font-style: normal;
   font-weight: 300;
   font-display: fallback;
   src: url(../fonts/merriweather/Latin-Merriweather-Light.woff2) format("woff2"), url(../fonts/merriweather/Latin-Merriweather-Light.woff) format("woff"), url(../fonts/merriweather/Latin-Merriweather-Light.ttf) format("truetype"); }
 
 @font-face {
-  font-family: Merriweather Web;
+  font-family: "Merriweather Web";
   font-style: normal;
   font-weight: 400;
   font-display: fallback;
   src: url(../fonts/merriweather/Latin-Merriweather-Regular.woff2) format("woff2"), url(../fonts/merriweather/Latin-Merriweather-Regular.woff) format("woff"), url(../fonts/merriweather/Latin-Merriweather-Regular.ttf) format("truetype"); }
 
 @font-face {
-  font-family: Merriweather Web;
+  font-family: "Merriweather Web";
   font-style: normal;
   font-weight: 700;
   font-display: fallback;
   src: url(../fonts/merriweather/Latin-Merriweather-Bold.woff2) format("woff2"), url(../fonts/merriweather/Latin-Merriweather-Bold.woff) format("woff"), url(../fonts/merriweather/Latin-Merriweather-Bold.ttf) format("truetype"); }
 
 @font-face {
-  font-family: Merriweather Web;
+  font-family: "Merriweather Web";
   font-style: italic;
   font-weight: 300;
   font-display: fallback;
   src: url(../fonts/merriweather/Latin-Merriweather-LightItalic.woff2) format("woff2"), url(../fonts/merriweather/Latin-Merriweather-LightItalic.woff) format("woff"), url(../fonts/merriweather/Latin-Merriweather-LightItalic.ttf) format("truetype"); }
 
 @font-face {
-  font-family: Merriweather Web;
+  font-family: "Merriweather Web";
   font-style: italic;
   font-weight: 400;
   font-display: fallback;
   src: url(../fonts/merriweather/Latin-Merriweather-Italic.woff2) format("woff2"), url(../fonts/merriweather/Latin-Merriweather-Italic.woff) format("woff"), url(../fonts/merriweather/Latin-Merriweather-Italic.ttf) format("truetype"); }
 
 @font-face {
-  font-family: Merriweather Web;
+  font-family: "Merriweather Web";
   font-style: italic;
   font-weight: 700;
   font-display: fallback;
@@ -2868,6 +2868,11 @@ abbr[title="required"] {
   .usa-radio__label::before {
     background: white;
     box-shadow: 0 0 0 2px #1b1b1b; }
+    @media (forced-colors: active) {
+      .usa-checkbox__label::before,
+      .usa-radio__label::before {
+        outline: 2px solid transparent;
+        outline-offset: 2px; } }
 
 .usa-checkbox__input:checked + [class*="__label"]::before,
 .usa-radio__input:checked + [class*="__label"]::before {
@@ -2877,6 +2882,10 @@ abbr[title="required"] {
 .usa-checkbox__input:disabled + [class*="__label"],
 .usa-radio__input:disabled + [class*="__label"] {
   color: rgba(27, 27, 27, 0.3); }
+  @media (forced-colors: active) {
+    .usa-checkbox__input:disabled + [class*="__label"],
+    .usa-radio__input:disabled + [class*="__label"] {
+      color: GrayText; } }
 
 .usa-checkbox__input:disabled + [class*="__label"]::before,
 .usa-radio__input:disabled + [class*="__label"]::before {
@@ -2893,6 +2902,10 @@ abbr[title="required"] {
 .usa-radio__input--tile:checked + [class*="__label"] {
   background-color: rgba(0, 94, 162, 0.1);
   border-color: #005ea2; }
+  @media (forced-colors: active) {
+    .usa-checkbox__input--tile:checked + [class*="__label"],
+    .usa-radio__input--tile:checked + [class*="__label"] {
+      border: ButtonText solid 0.25rem; } }
 
 .usa-checkbox__input--tile:disabled:checked + [class*="__label"],
 .usa-radio__input--tile:disabled:checked + [class*="__label"] {
@@ -2903,11 +2916,19 @@ abbr[title="required"] {
   background-image: url("../img/correct8.svg"), linear-gradient(transparent, transparent);
   background-repeat: no-repeat; }
 
+@media (forced-colors: active) {
+  .usa-checkbox__input:checked + [class*="__label"]::before, .usa-checkbox__input:checked:disabled + [class*="__label"]::before {
+    background-image: url("../img/correct8-alt.svg"), linear-gradient(transparent, transparent);
+    background-repeat: no-repeat; } }
+
 .usa-checkbox__input:checked:disabled + [class*="__label"]::before {
   background-color: rgba(27, 27, 27, 0.3); }
 
 .usa-radio__input:checked + [class*="__label"]::before {
   box-shadow: 0 0 0 2px #005ea2, inset 0 0 0 2px white; }
+  @media (forced-colors: active) {
+    .usa-radio__input:checked + [class*="__label"]::before {
+      background-color: ButtonText; } }
 
 .usa-radio__input:checked:disabled + [class*="__label"]::before {
   background-color: rgba(27, 27, 27, 0.2);
@@ -2948,7 +2969,13 @@ abbr[title="required"] {
     .usa-checkbox__input:checked + [class*="__label"]::before, .usa-checkbox__input:checked:disabled + [class*="__label"]::before {
       background-image: none;
       background-color: white;
-      content: url("../img/checkbox-check-print.svg"); } }
+      content: "\2714";
+      text-align: center; } }
+  @media (forced-colors: active) {
+    .usa-checkbox__input:checked + [class*="__label"]::before, .usa-checkbox__input:checked:disabled + [class*="__label"]::before {
+      background-color: ButtonText; }
+      .usa-checkbox__input:checked + [class*="__label"]::before--tile, .usa-checkbox__input:checked:disabled + [class*="__label"]::before--tile {
+        background-color: ButtonText; } }
 
 .usa-checkbox__label,
 .usa-radio__label {
@@ -3033,6 +3060,11 @@ abbr[title="required"] {
   .usa-select:-moz-focusring {
     color: transparent;
     text-shadow: 0 0 0 black; }
+  @media (forced-colors: active) {
+    .usa-select {
+      appearance: listbox;
+      background-image: none;
+      padding-right: 0; } }
 
 [type="file"] {
   border: none;
@@ -3257,6 +3289,9 @@ abbr[title="required"] {
     cursor: pointer;
     appearance: none;
     margin-top: -0.19rem; }
+    @media (forced-colors: active) {
+      .usa-range::-webkit-slider-thumb {
+        outline: 2px solid transparent; } }
   .usa-range::-moz-range-thumb {
     height: 1.25rem ;
     border-radius: 99rem ;
@@ -3265,6 +3300,9 @@ abbr[title="required"] {
     border: none;
     box-shadow: 0 0 0 2px #71767a;
     cursor: pointer; }
+    @media (forced-colors: active) {
+      .usa-range::-moz-range-thumb {
+        outline: 2px solid transparent; } }
   .usa-range::-ms-thumb {
     height: 1.25rem ;
     border-radius: 99rem ;
@@ -3273,6 +3311,9 @@ abbr[title="required"] {
     border: none;
     box-shadow: 0 0 0 2px #71767a;
     cursor: pointer; }
+    @media (forced-colors: active) {
+      .usa-range::-ms-thumb {
+        outline: 2px solid transparent; } }
   .usa-range::-ms-fill-lower {
     background-color: #f0f0f0;
     border-radius: 99rem;
@@ -3342,6 +3383,20 @@ abbr[title="required"] {
 
 .usa-combo-box--pristine .usa-combo-box__clear-input {
   display: block; }
+  @media (forced-colors: active) {
+    .usa-combo-box--pristine .usa-combo-box__clear-input {
+      background: url("../img/usa-icons/close.svg") no-repeat center/contain;
+      display: inline-block;
+      height: 1rem;
+      width: 1rem;
+      height: 1.5rem;
+      width: auto;
+      top: 0.5rem; }
+      @supports (mask: url("")) {
+        .usa-combo-box--pristine .usa-combo-box__clear-input {
+          background: none;
+          background-color: ButtonText;
+          mask: url("../img/usa-icons/close.svg") no-repeat center/contain; } } }
 
 .usa-combo-box__input {
   appearance: none;
@@ -3353,10 +3408,12 @@ button.usa-combo-box__toggle-list:focus,
 button.usa-combo-box__clear-input:focus {
   outline-offset: -4px; }
 
+/* stylelint-disable selector-class-pattern */
 .usa-combo-box__toggle-list__wrapper:focus,
 .usa-combo-box__clear-input__wrapper:focus {
   outline: 0; }
 
+/* stylelint-enable selector-class-pattern */
 .usa-combo-box__toggle-list,
 .usa-combo-box__clear-input {
   background-color: transparent;
@@ -3383,6 +3440,19 @@ button.usa-combo-box__clear-input:focus {
   background-repeat: no-repeat;
   background-size: auto 2rem;
   right: 1px; }
+  @media (forced-colors: active) {
+    .usa-combo-box__toggle-list {
+      background: url("../img/usa-icons/expand_more.svg") no-repeat center/contain;
+      display: inline-block;
+      height: 1rem;
+      width: 1rem;
+      height: auto;
+      width: auto; }
+      @supports (mask: url("")) {
+        .usa-combo-box__toggle-list {
+          background: none;
+          background-color: ButtonText;
+          mask: url("../img/usa-icons/expand_more.svg") no-repeat center/contain; } } }
 
 .usa-combo-box__input-button-separator {
   background-color: #c6cace;
@@ -3394,6 +3464,9 @@ button.usa-combo-box__clear-input:focus {
   right: calc(2.5em + 2px);
   box-sizing: border-box;
   z-index: 200; }
+  @media (forced-colors: active) {
+    .usa-combo-box__input-button-separator {
+      background-color: ButtonText; } }
 
 .usa-combo-box__list {
   border-width: 1px;
@@ -3472,6 +3545,14 @@ button.usa-combo-box__clear-input:focus {
     .usa-date-picker__calendar__month-selection:not([disabled]):hover, .usa-date-picker__calendar__month:not([disabled]):hover, .usa-date-picker__calendar__previous-year-chunk:not([disabled]):hover,
     .usa-date-picker__calendar__next-year-chunk:not([disabled]):hover, .usa-date-picker__calendar__year:not([disabled]):hover {
       background-color: #dfe1e2; }
+      @media (forced-colors: active) {
+        .usa-date-picker__button:not([disabled]):hover, .usa-date-picker__calendar__previous-year:not([disabled]):hover,
+        .usa-date-picker__calendar__previous-month:not([disabled]):hover,
+        .usa-date-picker__calendar__next-year:not([disabled]):hover,
+        .usa-date-picker__calendar__next-month:not([disabled]):hover, .usa-date-picker__calendar__date:not([disabled]):hover, .usa-date-picker__calendar__year-selection:not([disabled]):hover,
+        .usa-date-picker__calendar__month-selection:not([disabled]):hover, .usa-date-picker__calendar__month:not([disabled]):hover, .usa-date-picker__calendar__previous-year-chunk:not([disabled]):hover,
+        .usa-date-picker__calendar__next-year-chunk:not([disabled]):hover, .usa-date-picker__calendar__year:not([disabled]):hover {
+          background-color: buttontext; } }
     .usa-date-picker__button:not([disabled]):active, .usa-date-picker__calendar__previous-year:not([disabled]):active,
     .usa-date-picker__calendar__previous-month:not([disabled]):active,
     .usa-date-picker__calendar__next-year:not([disabled]):active,
@@ -3479,9 +3560,20 @@ button.usa-combo-box__clear-input:focus {
     .usa-date-picker__calendar__month-selection:not([disabled]):active, .usa-date-picker__calendar__month:not([disabled]):active, .usa-date-picker__calendar__previous-year-chunk:not([disabled]):active,
     .usa-date-picker__calendar__next-year-chunk:not([disabled]):active, .usa-date-picker__calendar__year:not([disabled]):active {
       background-color: #a9aeb1; }
+      @media (forced-colors: active) {
+        .usa-date-picker__button:not([disabled]):active, .usa-date-picker__calendar__previous-year:not([disabled]):active,
+        .usa-date-picker__calendar__previous-month:not([disabled]):active,
+        .usa-date-picker__calendar__next-year:not([disabled]):active,
+        .usa-date-picker__calendar__next-month:not([disabled]):active, .usa-date-picker__calendar__date:not([disabled]):active, .usa-date-picker__calendar__year-selection:not([disabled]):active,
+        .usa-date-picker__calendar__month-selection:not([disabled]):active, .usa-date-picker__calendar__month:not([disabled]):active, .usa-date-picker__calendar__previous-year-chunk:not([disabled]):active,
+        .usa-date-picker__calendar__next-year-chunk:not([disabled]):active, .usa-date-picker__calendar__year:not([disabled]):active {
+          background-color: buttontext; } }
 
 .usa-date-picker--active .usa-date-picker__button {
   background-color: #f0f0f0; }
+  @media (forced-colors: active) {
+    .usa-date-picker--active .usa-date-picker__button {
+      background-color: buttontext; } }
 
 .usa-date-picker--active .usa-date-picker__calendar {
   z-index: 400; }
@@ -3495,6 +3587,21 @@ button.usa-combo-box__clear-input:focus {
   background-size: 1.5rem;
   margin-top: 0.5em;
   width: 3em; }
+  @media (forced-colors: active) {
+    .usa-date-picker__button {
+      background: url("../img/usa-icons/calendar_today.svg") no-repeat center/contain;
+      display: inline-block;
+      height: 2.5rem;
+      width: 3rem;
+      mask-size: 1.5rem !important;
+      position: relative; }
+      @supports (mask: url("")) {
+        .usa-date-picker__button {
+          background: none;
+          background-color: ButtonText;
+          mask: url("../img/usa-icons/calendar_today.svg") no-repeat center/contain; } }
+      .usa-date-picker__button:not([disabled]):hover {
+        background-color: Highlight; } }
 
 .usa-date-picker--initialized .usa-date-picker__wrapper {
   display: flex; }
@@ -3508,6 +3615,7 @@ button.usa-combo-box__clear-input:focus {
   width: 100%;
   z-index: 100; }
 
+/* stylelint-disable selector-class-pattern */
 .usa-date-picker__calendar__table {
   border-spacing: 0;
   border-collapse: collapse;
@@ -3542,22 +3650,76 @@ button.usa-combo-box__clear-input:focus {
   background-size: auto 1.5rem;
   height: 1.5rem;
   padding: 20px 10px; }
+  @media (forced-colors: active) {
+    .usa-date-picker__calendar__previous-year,
+    .usa-date-picker__calendar__previous-month,
+    .usa-date-picker__calendar__next-year,
+    .usa-date-picker__calendar__next-month {
+      mask-size: 1.5rem !important; } }
 
 .usa-date-picker__calendar__previous-year:not([disabled]) {
   background-image: url("../img/usa-icons/navigate_far_before.svg"), linear-gradient(transparent, transparent);
   background-repeat: no-repeat; }
+  @media (forced-colors: active) {
+    .usa-date-picker__calendar__previous-year:not([disabled]) {
+      background: url("../img/usa-icons/navigate_far_before.svg") no-repeat center/contain;
+      display: inline-block;
+      height: 2.5rem;
+      width: 3rem;
+      background-color: buttonText; }
+      @supports (mask: url("")) {
+        .usa-date-picker__calendar__previous-year:not([disabled]) {
+          background: none;
+          background-color: ButtonText;
+          mask: url("../img/usa-icons/navigate_far_before.svg") no-repeat center/contain; } } }
 
 .usa-date-picker__calendar__previous-month:not([disabled]) {
   background-image: url("../img/usa-icons/navigate_before.svg"), linear-gradient(transparent, transparent);
   background-repeat: no-repeat; }
+  @media (forced-colors: active) {
+    .usa-date-picker__calendar__previous-month:not([disabled]) {
+      background: url("../img/usa-icons/navigate_before.svg") no-repeat center/contain;
+      display: inline-block;
+      height: 2.5rem;
+      width: 3rem;
+      background-color: buttonText; }
+      @supports (mask: url("")) {
+        .usa-date-picker__calendar__previous-month:not([disabled]) {
+          background: none;
+          background-color: ButtonText;
+          mask: url("../img/usa-icons/navigate_before.svg") no-repeat center/contain; } } }
 
 .usa-date-picker__calendar__next-year:not([disabled]) {
   background-image: url("../img/usa-icons/navigate_far_next.svg"), linear-gradient(transparent, transparent);
   background-repeat: no-repeat; }
+  @media (forced-colors: active) {
+    .usa-date-picker__calendar__next-year:not([disabled]) {
+      background: url("../img/usa-icons/navigate_far_next.svg") no-repeat center/contain;
+      display: inline-block;
+      height: 2.5rem;
+      width: 3rem;
+      background-color: buttonText; }
+      @supports (mask: url("")) {
+        .usa-date-picker__calendar__next-year:not([disabled]) {
+          background: none;
+          background-color: ButtonText;
+          mask: url("../img/usa-icons/navigate_far_next.svg") no-repeat center/contain; } } }
 
 .usa-date-picker__calendar__next-month:not([disabled]) {
   background-image: url("../img/usa-icons/navigate_next.svg"), linear-gradient(transparent, transparent);
   background-repeat: no-repeat; }
+  @media (forced-colors: active) {
+    .usa-date-picker__calendar__next-month:not([disabled]) {
+      background: url("../img/usa-icons/navigate_next.svg") no-repeat center/contain;
+      display: inline-block;
+      height: 2.5rem;
+      width: 3rem;
+      background-color: buttonText; }
+      @supports (mask: url("")) {
+        .usa-date-picker__calendar__next-month:not([disabled]) {
+          background: none;
+          background-color: ButtonText;
+          mask: url("../img/usa-icons/navigate_next.svg") no-repeat center/contain; } } }
 
 .usa-date-picker__calendar__day-of-week {
   padding: 6px 0px; }
@@ -3577,14 +3739,23 @@ button.usa-combo-box__clear-input:focus {
     .usa-date-picker__calendar__date--selected:not([disabled]), .usa-date-picker__calendar__date--range-date:not([disabled]) {
       background-color: #0050d8;
       color: #f9f9f9; }
+      @media (forced-colors: active) {
+        .usa-date-picker__calendar__date--selected:not([disabled]), .usa-date-picker__calendar__date--range-date:not([disabled]) {
+          border: ActiveText 2px solid; } }
       .usa-date-picker__calendar__date--selected:not([disabled]):hover, .usa-date-picker__calendar__date--range-date:not([disabled]):hover {
         background-color: #0050d8;
         color: #e6e6e6; }
       .usa-date-picker__calendar__date--selected:not([disabled]):focus, .usa-date-picker__calendar__date--range-date:not([disabled]):focus {
         background-color: #0050d8;
         color: #f9f9f9; }
+        @media (forced-colors: active) {
+          .usa-date-picker__calendar__date--selected:not([disabled]):focus, .usa-date-picker__calendar__date--range-date:not([disabled]):focus {
+            border: ActiveText 2px solid; } }
       .usa-date-picker__calendar__date--selected:not([disabled]):active, .usa-date-picker__calendar__date--range-date:not([disabled]):active {
         background-color: #1a4480; }
+        @media (forced-colors: active) {
+          .usa-date-picker__calendar__date--selected:not([disabled]):active, .usa-date-picker__calendar__date--range-date:not([disabled]):active {
+            background-color: Highlight; } }
   .usa-date-picker__calendar__date--range-date-start {
     border-top-left-radius: 10%;
     border-bottom-left-radius: 10%; }
@@ -3595,12 +3766,24 @@ button.usa-combo-box__clear-input:focus {
     background-color: #cfe8ff; }
     .usa-date-picker__calendar__date--within-range:not([disabled]) {
       background-color: #cfe8ff; }
+      @media (forced-colors: active) {
+        .usa-date-picker__calendar__date--within-range:not([disabled]) {
+          border: Highlight 2px solid; } }
       .usa-date-picker__calendar__date--within-range:not([disabled]):hover {
         background-color: #cfe8ff; }
+        @media (forced-colors: active) {
+          .usa-date-picker__calendar__date--within-range:not([disabled]):hover {
+            border: Highlight 2px solid; } }
       .usa-date-picker__calendar__date--within-range:not([disabled]):focus {
         background-color: #cfe8ff; }
+        @media (forced-colors: active) {
+          .usa-date-picker__calendar__date--within-range:not([disabled]):focus {
+            border: Highlight 2px solid; } }
       .usa-date-picker__calendar__date--within-range:not([disabled]):active {
         background-color: #cfe8ff; }
+        @media (forced-colors: active) {
+          .usa-date-picker__calendar__date--within-range:not([disabled]):active {
+            background-color: Highlight; } }
 
 .usa-date-picker__calendar__month-label {
   flex: 4;
@@ -3647,14 +3830,56 @@ button.usa-combo-box__clear-input:focus {
   background-size: auto 2rem;
   margin: auto;
   padding: 40px 0; }
+  @media (forced-colors: active) {
+    .usa-date-picker__calendar__previous-year-chunk,
+    .usa-date-picker__calendar__next-year-chunk {
+      mask-size: 1.5rem !important; } }
 
 .usa-date-picker__calendar__previous-year-chunk:not([disabled]) {
   background-image: url("../img/usa-icons/navigate_before.svg"), linear-gradient(transparent, transparent);
   background-repeat: no-repeat; }
+  @media (forced-colors: active) {
+    .usa-date-picker__calendar__previous-year-chunk:not([disabled]) {
+      background-image: none; }
+      .usa-date-picker__calendar__previous-year-chunk:not([disabled])::after {
+        background: url("../img/usa-icons/navigate_before.svg") no-repeat center/contain;
+        display: inline-block;
+        height: 2.5rem;
+        width: 3rem;
+        content: "";
+        vertical-align: middle;
+        margin-left: auto; }
+        @supports (mask: url("")) {
+          .usa-date-picker__calendar__previous-year-chunk:not([disabled])::after {
+            background: none;
+            background-color: ButtonText;
+            mask: url("../img/usa-icons/navigate_before.svg") no-repeat center/contain; } }
+      .usa-date-picker__calendar__previous-year-chunk:not([disabled]):hover {
+        outline: 2px solid transparent;
+        background-color: transparent; } }
 
 .usa-date-picker__calendar__next-year-chunk:not([disabled]) {
   background-image: url("../img/usa-icons/navigate_next.svg"), linear-gradient(transparent, transparent);
   background-repeat: no-repeat; }
+  @media (forced-colors: active) {
+    .usa-date-picker__calendar__next-year-chunk:not([disabled]) {
+      background-image: none; }
+      .usa-date-picker__calendar__next-year-chunk:not([disabled])::after {
+        background: url("../img/usa-icons/navigate_next.svg") no-repeat center/contain;
+        display: inline-block;
+        height: 2.5rem;
+        width: 3rem;
+        content: "";
+        vertical-align: middle;
+        margin-left: auto; }
+        @supports (mask: url("")) {
+          .usa-date-picker__calendar__next-year-chunk:not([disabled])::after {
+            background: none;
+            background-color: ButtonText;
+            mask: url("../img/usa-icons/navigate_next.svg") no-repeat center/contain; } }
+      .usa-date-picker__calendar__next-year-chunk:not([disabled]):hover {
+        outline: 2px solid transparent;
+        background-color: transparent; } }
 
 .usa-date-picker__calendar__year {
   padding: 10px 0; }
@@ -3678,6 +3903,7 @@ button.usa-combo-box__clear-input:focus {
       .usa-date-picker__calendar__year--selected:not([disabled]):active {
         background-color: #1a4480; }
 
+/* stylelint-enable selector-class-pattern */
 .usa-time-picker {
   width: 10em; }
 
@@ -5096,41 +5322,48 @@ button.usa-combo-box__clear-input:focus {
     outline: 0.25rem solid #2491ff;
     outline-offset: 0; }
 
-.usa-link--external::after {
-  background: url("../img/usa-icons/launch.svg") no-repeat center / 1.75ex 1.75ex;
+.usa-link--external {
   display: inline-block;
-  height: 1.75ex;
-  width: 1.75ex;
-  content: "";
-  height: 1.75ex;
-  margin-left: 2px;
-  background-position: center;
-  display: inline;
-  padding-left: 1.75ex;
-  vertical-align: middle; }
-  @supports (mask: url("")) {
-    .usa-link--external::after {
-      background: none;
-      background-color: currentColor;
-      mask: url("../img/usa-icons/launch.svg") no-repeat center / 1.75ex 1.75ex; } }
-
-.usa-link--external.usa-link--alt::after {
-  background: url("../img/usa-icons-bg/launch--white.svg") no-repeat center / 1.75ex 1.75ex;
-  display: inline-block;
-  height: 1.75ex;
-  width: 1.75ex;
-  content: "";
-  height: 1.75ex;
-  margin-left: 2px;
-  background-position: center;
-  display: inline;
-  padding-left: 1.75ex;
-  vertical-align: middle; }
-  @supports (mask: url("")) {
+  padding-right: 1.75ex;
+  position: relative; }
+  .usa-link--external::after {
+    background: url("../img/usa-icons/launch.svg") no-repeat center/contain;
+    display: inline-block;
+    height: 1.75ex;
+    width: 1.75ex;
+    background-position: center;
+    content: "";
+    display: inline-block;
+    height: 1.75ex;
+    margin-left: 2px;
+    margin-top: 0.7ex;
+    position: absolute; }
+    @supports (mask: url("")) {
+      .usa-link--external::after {
+        background: none;
+        background-color: currentColor;
+        mask: url("../img/usa-icons/launch.svg") no-repeat center/contain; } }
+  .usa-link--external.usa-link--alt {
+    display: inline-block;
+    padding-right: 1.75ex;
+    position: relative; }
     .usa-link--external.usa-link--alt::after {
-      background: none;
-      background-color: currentColor;
-      mask: url("../img/usa-icons/launch.svg") no-repeat center / 1.75ex 1.75ex; } }
+      background: url("../img/usa-icons-bg/launch--white.svg") no-repeat center/contain;
+      display: inline-block;
+      height: 1.75ex;
+      width: 1.75ex;
+      background-position: center;
+      content: "";
+      display: inline-block;
+      height: 1.75ex;
+      margin-left: 2px;
+      margin-top: 0.7ex;
+      position: absolute; }
+      @supports (mask: url("")) {
+        .usa-link--external.usa-link--alt::after {
+          background: none;
+          background-color: currentColor;
+          mask: url("../img/usa-icons/launch.svg") no-repeat center/contain; } }
 
 .usa-list--unstyled {
   margin-bottom: 0 ;
@@ -5368,6 +5601,9 @@ button.usa-combo-box__clear-input:focus {
     background-color: #dfe1e2;
     color: #1b1b1b;
     text-decoration: none; }
+  @media (forced-colors: active) {
+    .usa-accordion__button {
+      forced-color-adjust: none; } }
 
 .usa-accordion__button[aria-expanded="false"] {
   background-image: url("../img/usa-icons/add.svg"), linear-gradient(transparent, transparent);
@@ -5402,7 +5638,7 @@ button.usa-combo-box__clear-input:focus {
   border-left-color: #00a91c;
   color: #1b1b1b; }
   .usa-alert--success:before {
-    background: url("../img/usa-icons/check_circle.svg") no-repeat center / 2rem 2rem;
+    background: url("../img/usa-icons/check_circle.svg") no-repeat center/contain;
     display: inline-block;
     height: 2rem;
     width: 2rem;
@@ -5416,7 +5652,7 @@ button.usa-combo-box__clear-input:focus {
       .usa-alert--success:before {
         background: none;
         background-color: #1b1b1b;
-        mask: url("../img/usa-icons/check_circle.svg") no-repeat center / 2rem 2rem; } }
+        mask: url("../img/usa-icons/check_circle.svg") no-repeat center/contain; } }
   .usa-alert--success.usa-alert--slim:before {
     background-size: 1.5rem;
     height: 2.5rem;
@@ -5442,7 +5678,7 @@ button.usa-combo-box__clear-input:focus {
   border-left-color: #ffbe2e;
   color: #1b1b1b; }
   .usa-alert--warning:before {
-    background: url("../img/usa-icons/warning.svg") no-repeat center / 2rem 2rem;
+    background: url("../img/usa-icons/warning.svg") no-repeat center/contain;
     display: inline-block;
     height: 2rem;
     width: 2rem;
@@ -5456,7 +5692,7 @@ button.usa-combo-box__clear-input:focus {
       .usa-alert--warning:before {
         background: none;
         background-color: #1b1b1b;
-        mask: url("../img/usa-icons/warning.svg") no-repeat center / 2rem 2rem; } }
+        mask: url("../img/usa-icons/warning.svg") no-repeat center/contain; } }
   .usa-alert--warning.usa-alert--slim:before {
     background-size: 1.5rem;
     height: 2.5rem;
@@ -5482,7 +5718,7 @@ button.usa-combo-box__clear-input:focus {
   border-left-color: #d54309;
   color: #1b1b1b; }
   .usa-alert--error:before {
-    background: url("../img/usa-icons/error.svg") no-repeat center / 2rem 2rem;
+    background: url("../img/usa-icons/error.svg") no-repeat center/contain;
     display: inline-block;
     height: 2rem;
     width: 2rem;
@@ -5496,7 +5732,7 @@ button.usa-combo-box__clear-input:focus {
       .usa-alert--error:before {
         background: none;
         background-color: #1b1b1b;
-        mask: url("../img/usa-icons/error.svg") no-repeat center / 2rem 2rem; } }
+        mask: url("../img/usa-icons/error.svg") no-repeat center/contain; } }
   .usa-alert--error.usa-alert--slim:before {
     background-size: 1.5rem;
     height: 2.5rem;
@@ -5522,7 +5758,7 @@ button.usa-combo-box__clear-input:focus {
   border-left-color: #00bde3;
   color: #1b1b1b; }
   .usa-alert--info:before {
-    background: url("../img/usa-icons/info.svg") no-repeat center / 2rem 2rem;
+    background: url("../img/usa-icons/info.svg") no-repeat center/contain;
     display: inline-block;
     height: 2rem;
     width: 2rem;
@@ -5536,7 +5772,7 @@ button.usa-combo-box__clear-input:focus {
       .usa-alert--info:before {
         background: none;
         background-color: #1b1b1b;
-        mask: url("../img/usa-icons/info.svg") no-repeat center / 2rem 2rem; } }
+        mask: url("../img/usa-icons/info.svg") no-repeat center/contain; } }
   .usa-alert--info.usa-alert--slim:before {
     background-size: 1.5rem;
     height: 2.5rem;
@@ -5562,7 +5798,7 @@ button.usa-combo-box__clear-input:focus {
   border-left-color: #9c3d10;
   color: white; }
   .usa-alert--emergency:before {
-    background: url("../img/usa-icons-bg/error--white.svg") no-repeat center / 2rem 2rem;
+    background: url("../img/usa-icons-bg/error--white.svg") no-repeat center/contain;
     display: inline-block;
     height: 2rem;
     width: 2rem;
@@ -5576,7 +5812,7 @@ button.usa-combo-box__clear-input:focus {
       .usa-alert--emergency:before {
         background: none;
         background-color: white;
-        mask: url("../img/usa-icons/error.svg") no-repeat center / 2rem 2rem; } }
+        mask: url("../img/usa-icons/error.svg") no-repeat center/contain; } }
   .usa-alert--emergency.usa-alert--slim:before {
     background-size: 1.5rem;
     height: 2.5rem;
@@ -5698,6 +5934,9 @@ button.usa-combo-box__clear-input:focus {
   width: 1.21875ex; }
   .usa-banner__lock-image path {
     fill: currentColor; }
+    @media (forced-colors: active) {
+      .usa-banner__lock-image path {
+        fill: CanvasText; } }
 
 .usa-banner__inner {
   padding-left: 1rem ;
@@ -5749,18 +5988,18 @@ button.usa-combo-box__clear-input:focus {
   margin-top: 2px;
   text-decoration: underline; }
   .usa-banner__header-action::after {
-    background: url("../img/usa-icons/expand_more.svg") no-repeat center / 1rem 1rem;
+    background: url("../img/usa-icons/expand_more.svg") no-repeat center/contain;
     display: inline-block;
     height: 1rem;
     width: 1rem;
     content: "";
     vertical-align: middle;
-    margin-left: 0; }
+    margin-left: auto; }
     @supports (mask: url("")) {
       .usa-banner__header-action::after {
         background: none;
         background-color: #005ea2;
-        mask: url("../img/usa-icons/expand_more.svg") no-repeat center / 1rem 1rem; }
+        mask: url("../img/usa-icons/expand_more.svg") no-repeat center/contain; }
         .usa-banner__header-action::after:hover {
           background-color: #1a4480; } }
   .usa-banner__header-action:hover::after {
@@ -5775,6 +6014,11 @@ button.usa-combo-box__clear-input:focus {
   @media all and (min-width: 40em) {
     .usa-banner__header-action {
       display: none; } }
+  @media (forced-colors: active) {
+    .usa-banner__header-action {
+      color: LinkText; }
+      .usa-banner__header-action::after {
+        background-color: ButtonText; } }
 
 .usa-banner__header-flag {
   float: left ;
@@ -5873,7 +6117,7 @@ button.usa-combo-box__clear-input:focus {
       margin-left: 0.5rem;
       position: relative; }
       .usa-banner__button::after {
-        background: url("../img/usa-icons/expand_more.svg") no-repeat center / 1rem 1rem;
+        background: url("../img/usa-icons/expand_more.svg") no-repeat center/contain;
         display: inline-block;
         height: 1rem;
         width: 1rem;
@@ -5884,7 +6128,7 @@ button.usa-combo-box__clear-input:focus {
           .usa-banner__button::after {
             background: none;
             background-color: #005ea2;
-            mask: url("../img/usa-icons/expand_more.svg") no-repeat center / 1rem 1rem; }
+            mask: url("../img/usa-icons/expand_more.svg") no-repeat center/contain; }
             .usa-banner__button::after:hover {
               background-color: #1a4480; } }
       .usa-banner__button:hover::after {
@@ -5894,8 +6138,12 @@ button.usa-combo-box__clear-input:focus {
         color: #54278f ; }
       .usa-banner__button:hover, .usa-banner__button:active {
         color: #1a4480 ; }
-      .usa-banner__button:after {
-        position: absolute; }
+      .usa-banner__button::after, .usa-banner__button:hover::after {
+        position: absolute; } }
+    @media all and (min-width: 40em) and (forced-colors: active) {
+      .usa-banner__button::after, .usa-banner__button:hover::after {
+        background-color: ButtonText; } }
+  @media all and (min-width: 40em) {
       .usa-banner__button:hover {
         text-decoration: none; } }
   .usa-banner__button[aria-expanded="false"] {
@@ -5904,7 +6152,7 @@ button.usa-combo-box__clear-input:focus {
     background-image: none; }
     @media all and (max-width: 39.99em) {
       .usa-banner__button[aria-expanded="true"]::after {
-        background: url("../img/usa-icons/close.svg") no-repeat center / 1.5rem 1.5rem;
+        background: url("../img/usa-icons/close.svg") no-repeat center/contain;
         display: inline-block;
         height: 3rem;
         width: 3rem;
@@ -5915,8 +6163,8 @@ button.usa-combo-box__clear-input:focus {
           .usa-banner__button[aria-expanded="true"]::after {
             background: none;
             background-color: #005ea2;
-            mask: url("../img/usa-icons/close.svg") no-repeat center / 1.5rem 1.5rem; } }
-      .usa-banner__button[aria-expanded="true"]:before {
+            mask: url("../img/usa-icons/close.svg") no-repeat center/contain; } }
+      .usa-banner__button[aria-expanded="true"]::before {
         position: absolute ;
         bottom: 0;
         top: 0;
@@ -5927,7 +6175,7 @@ button.usa-combo-box__clear-input:focus {
         display: block;
         height: 3rem;
         width: 3rem; }
-      .usa-banner__button[aria-expanded="true"]:after {
+      .usa-banner__button[aria-expanded="true"]::after {
         position: absolute ;
         bottom: 0;
         top: 0;
@@ -5939,7 +6187,7 @@ button.usa-combo-box__clear-input:focus {
         padding: 0;
         position: relative; }
         .usa-banner__button[aria-expanded="true"]::after {
-          background: url("../img/usa-icons/expand_less.svg") no-repeat center / 1rem 1rem;
+          background: url("../img/usa-icons/expand_less.svg") no-repeat center/contain;
           display: inline-block;
           height: 1rem;
           width: 1rem;
@@ -5950,14 +6198,17 @@ button.usa-combo-box__clear-input:focus {
             .usa-banner__button[aria-expanded="true"]::after {
               background: none;
               background-color: #005ea2;
-              mask: url("../img/usa-icons/expand_less.svg") no-repeat center / 1rem 1rem; }
+              mask: url("../img/usa-icons/expand_less.svg") no-repeat center/contain; }
               .usa-banner__button[aria-expanded="true"]::after:hover {
                 background-color: #1a4480; } }
         .usa-banner__button[aria-expanded="true"]:hover::after {
           content: "";
           background-color: #1a4480; }
-        .usa-banner__button[aria-expanded="true"]:after {
+        .usa-banner__button[aria-expanded="true"]::after, .usa-banner__button[aria-expanded="true"]:hover::after {
           position: absolute; } }
+    @media all and (min-width: 40em) and (forced-colors: active) {
+      .usa-banner__button[aria-expanded="true"]::after, .usa-banner__button[aria-expanded="true"]:hover::after {
+        background-color: ButtonText; } }
 
 .usa-banner__button-text {
   position: absolute;
@@ -5968,6 +6219,9 @@ button.usa-combo-box__clear-input:focus {
     .usa-banner__button-text {
       position: static;
       display: inline; } }
+  @media (forced-colors: active) {
+    .usa-banner__button-text {
+      color: LinkText; } }
 
 .usa-banner__icon {
   width: 2.5rem; }
@@ -6060,7 +6314,7 @@ button.usa-combo-box__clear-input:focus {
           .usa-breadcrumb__list-item:nth-last-child(2) .usa-breadcrumb__link.usa-button--active {
             color: #162e51; }
           .usa-breadcrumb__list-item:nth-last-child(2) .usa-breadcrumb__link::before {
-            background: url("../img/usa-icons/arrow_back.svg") no-repeat center / 2ex 2ex;
+            background: url("../img/usa-icons/arrow_back.svg") no-repeat center/contain;
             display: inline-block;
             height: 2ex;
             width: 2ex;
@@ -6071,7 +6325,7 @@ button.usa-combo-box__clear-input:focus {
               .usa-breadcrumb__list-item:nth-last-child(2) .usa-breadcrumb__link::before {
                 background: none;
                 background-color: #71767a;
-                mask: url("../img/usa-icons/arrow_back.svg") no-repeat center / 2ex 2ex; } }
+                mask: url("../img/usa-icons/arrow_back.svg") no-repeat center/contain; } }
           .usa-breadcrumb__list-item:nth-last-child(2) .usa-breadcrumb__link:visited {
             color: #54278f ; }
           .usa-breadcrumb__list-item:nth-last-child(2) .usa-breadcrumb__link:hover, .usa-breadcrumb__list-item:nth-last-child(2) .usa-breadcrumb__link:active {
@@ -6090,7 +6344,7 @@ button.usa-combo-box__clear-input:focus {
     .usa-breadcrumb__list-item {
       position: static; }
       .usa-breadcrumb__list-item:not(:last-child)::after {
-        background: url("../img/usa-icons/navigate_next.svg") no-repeat center / 2ex 2ex;
+        background: url("../img/usa-icons/navigate_next.svg") no-repeat center/contain;
         display: inline-block;
         height: 2ex;
         width: 2ex;
@@ -6101,7 +6355,7 @@ button.usa-combo-box__clear-input:focus {
           .usa-breadcrumb__list-item:not(:last-child)::after {
             background: none;
             background-color: #71767a;
-            mask: url("../img/usa-icons/navigate_next.svg") no-repeat center / 2ex 2ex; } }
+            mask: url("../img/usa-icons/navigate_next.svg") no-repeat center/contain; } }
       .usa-breadcrumb__list-item:not(:last-child)::after {
         bottom: -0.2em;
         margin-left: 0px;
@@ -6757,8 +7011,58 @@ button.usa-combo-box__clear-input:focus {
       padding-left: 0 ;
       padding-right: 0 ; } }
   .usa-footer__primary-link:hover {
-    cursor: pointer;
     text-decoration: underline; }
+  .usa-footer__primary-link--button {
+    width: 100%;
+    border: 0;
+    cursor: pointer; }
+    .usa-footer__primary-link--button::before {
+      background: url("../img/usa-icons/expand_more.svg") no-repeat center/contain;
+      display: inline-block;
+      height: 1.25rem;
+      width: 1.25rem;
+      content: "";
+      vertical-align: middle;
+      margin-right: 0.25rem; }
+      @supports (mask: url("")) {
+        .usa-footer__primary-link--button::before {
+          background: none;
+          background-color: currentColor;
+          mask: url("../img/usa-icons/expand_more.svg") no-repeat center/contain; } }
+    .usa-footer__primary-link--button:not([disabled]):focus {
+      outline: 0.25rem solid #2491ff;
+      outline-offset: -0.25rem; }
+    .usa-footer__primary-link--button::before {
+      height: 1.25rem ;
+      width: 1.25rem ;
+      align-items: center;
+      background-size: contain;
+      content: "";
+      display: inline-flex;
+      justify-content: center;
+      margin-right: 0.25rem;
+      margin-left: -0.25rem; }
+      @media (forced-colors: active) {
+        .usa-footer__primary-link--button::before {
+          background-color: buttonText !important; } }
+    .usa-footer__primary-link--button + .usa-list--unstyled {
+      margin-top: 0.5rem;
+      margin-bottom: 0.5rem; }
+    .usa-footer__primary-link--button[aria-expanded="false"]::before {
+      background: url("../img/usa-icons/navigate_next.svg") no-repeat center/contain;
+      display: inline-block;
+      height: 1.25rem;
+      width: 1.25rem;
+      content: "";
+      vertical-align: middle;
+      margin-right: 0.25rem; }
+      @supports (mask: url("")) {
+        .usa-footer__primary-link--button[aria-expanded="false"]::before {
+          background: none;
+          background-color: currentColor;
+          mask: url("../img/usa-icons/navigate_next.svg") no-repeat center/contain; } }
+    .usa-footer__primary-link--button[aria-expanded="false"] + .usa-list--unstyled {
+      display: none; }
 
 .usa-footer__secondary-link {
   line-height: 1.1;
@@ -6881,34 +7185,20 @@ button.usa-combo-box__clear-input:focus {
 .usa-social-link {
   height: 3rem ;
   width: 3rem ;
-  background-position: center center;
-  background-size: auto 2rem;
   background-color: rgba(0, 0, 0, 0.1);
-  display: inline-block; }
-  .usa-social-link span {
-    position: absolute;
-    left: -999em;
-    right: auto; }
+  display: inline-block;
+  padding: 0.25rem; }
+  .usa-social-link:hover {
+    background-color: white; }
+  @media (forced-colors: active) {
+    .usa-social-link {
+      background-color: lightgrey;
+      forced-color-adjust: none; } }
 
-.usa-social-link--facebook {
-  background-image: url("../img/usa-icons/facebook.svg"), linear-gradient(transparent, transparent);
-  background-repeat: no-repeat; }
-
-.usa-social-link--twitter {
-  background-image: url("../img/usa-icons/twitter.svg"), linear-gradient(transparent, transparent);
-  background-repeat: no-repeat; }
-
-.usa-social-link--youtube {
-  background-image: url("../img/usa-icons/youtube.svg"), linear-gradient(transparent, transparent);
-  background-repeat: no-repeat; }
-
-.usa-social-link--instagram {
-  background-image: url("../img/usa-icons/instagram.svg"), linear-gradient(transparent, transparent);
-  background-repeat: no-repeat; }
-
-.usa-social-link--rss {
-  background-image: url("../img/usa-icons/rss_feed.svg"), linear-gradient(transparent, transparent);
-  background-repeat: no-repeat; }
+.usa-social-link__icon {
+  display: block;
+  height: auto;
+  width: 100%; }
 
 @media all and (min-width: 30em) {
   .usa-footer__address {
@@ -6975,35 +7265,8 @@ button.usa-combo-box__clear-input:focus {
 
 .usa-footer--big .usa-footer__primary-content--collapsible .usa-footer__primary-link {
   align-items: center;
-  cursor: pointer;
   display: flex;
   justify-content: flex-start; }
-  .usa-footer--big .usa-footer__primary-content--collapsible .usa-footer__primary-link::before {
-    background-image: url("../img/usa-icons/expand_more.svg"), linear-gradient(transparent, transparent);
-    background-repeat: no-repeat;
-    height: 1.25rem ;
-    width: 1.25rem ;
-    align-items: center;
-    background-size: contain;
-    content: "";
-    display: inline-flex;
-    justify-content: center;
-    margin-right: 0.25rem;
-    margin-left: -0.25rem; }
-  @media all and (min-width: 30em) {
-    .usa-footer--big .usa-footer__primary-content--collapsible .usa-footer__primary-link::before {
-      content: none; } }
-
-.usa-footer--big .usa-footer__primary-content--collapsible.hidden .usa-list--unstyled {
-  display: none; }
-
-.usa-footer--big .usa-footer__primary-content--collapsible.hidden .usa-footer__primary-link::before {
-  background-image: url("../img/usa-icons/navigate_next.svg"), linear-gradient(transparent, transparent);
-  background-repeat: no-repeat; }
-
-@media all and (min-width: 30em) {
-  .usa-footer--big .usa-footer__primary-content--collapsible.hidden .usa-footer__primary-link {
-    margin: 0; } }
 
 .usa-footer--big .usa-footer__primary-content--collapsible .usa-list--unstyled {
   padding-left: 1rem ;
@@ -7276,7 +7539,13 @@ button.usa-combo-box__clear-input:focus {
       height: 0.25rem;
       left: 1rem;
       right: 1rem;
-      bottom: -0.25rem; }
+      bottom: -0.25rem; } }
+    @media all and (min-width: 64em) and (forced-colors: active) {
+      .usa-header--basic .usa-nav__primary-item > .usa-current::after,
+      .usa-header--basic .usa-nav__link:hover::after {
+        background-color: ButtonText; } }
+
+@media all and (min-width: 64em) {
   .usa-header--basic .usa-nav__link[aria-expanded="true"]::after,
   .usa-header--basic .usa-nav__link[aria-expanded="true"]:hover::after {
     display: none; }
@@ -7319,7 +7588,13 @@ button.usa-combo-box__clear-input:focus {
         height: 0.25rem;
         left: 1rem;
         right: 1rem;
-        bottom: 0; }
+        bottom: 0; } }
+      @media all and (min-width: 64em) and (forced-colors: active) {
+        .usa-header--extended .usa-nav__primary-item > .usa-current::after,
+        .usa-header--extended .usa-nav__primary-item > .usa-nav__link:hover::after {
+          background-color: ButtonText; } }
+
+@media all and (min-width: 64em) {
     .usa-header--extended .usa-nav__link[aria-expanded="true"]::after,
     .usa-header--extended .usa-nav__link[aria-expanded="true"]:hover::after {
       display: none; } }
@@ -8431,6 +8706,9 @@ html.usa-js-loading .usa-nav__submenu.usa-megamenu {
         top: 0.25rem;
         width: 0.25rem;
         left: 0.25rem; } }
+      @media all and (max-width: 63.99em) and (forced-colors: active) {
+        .usa-nav__primary .usa-current::after {
+          background-color: ButtonText; } }
     @media all and (max-width: 63.99em) and (min-width: 40em) {
       .usa-nav__primary .usa-current {
         position: relative; }
@@ -8444,6 +8722,9 @@ html.usa-js-loading .usa-nav__submenu.usa-megamenu {
           top: 0.25rem;
           width: 0.25rem;
           left: 0; } }
+    @media all and (max-width: 63.99em) and (min-width: 40em) and (forced-colors: active) {
+      .usa-nav__primary .usa-current::after {
+        background-color: ButtonText; } }
 
 @media all and (max-width: 63.99em) {
     .usa-nav__primary a {
@@ -8491,6 +8772,7 @@ html.usa-js-loading .usa-nav__submenu.usa-megamenu {
   margin: 0;
   padding: 0;
   text-align: left;
+  position: relative;
   color: #565c65;
   font-weight: normal;
   line-height: 1.1;
@@ -8523,6 +8805,9 @@ html.usa-js-loading .usa-nav__submenu.usa-megamenu {
       padding: 1rem;
       font-size: 0.93rem;
       font-weight: 700; } }
+  @media (forced-colors: active) {
+    .usa-nav__primary button {
+      forced-color-adjust: auto; } }
   .usa-nav__primary button:hover {
     color: #005ea2;
     background-color: #f0f0f0;
@@ -8532,36 +8817,94 @@ html.usa-js-loading .usa-nav__submenu.usa-megamenu {
         background-color: transparent; } }
   .usa-nav__primary button[aria-expanded="false"] {
     /* stylelint-disable-line selector-no-qualifying-type */
-    background-image: url("../img/usa-icons/add.svg"), linear-gradient(transparent, transparent);
-    background-repeat: no-repeat;
-    background-position: right 0 center;
-    background-size: 1.25rem; }
+    background-image: none; }
+    .usa-nav__primary button[aria-expanded="false"] span::after {
+      background: url("../img/usa-icons/add.svg") no-repeat center/contain;
+      display: inline-block;
+      height: 1.25rem;
+      width: 1.25rem;
+      content: "";
+      vertical-align: middle;
+      margin-left: auto; }
+      @supports (mask: url("")) {
+        .usa-nav__primary button[aria-expanded="false"] span::after {
+          background: none;
+          background-color: ButtonText;
+          mask: url("../img/usa-icons/add.svg") no-repeat center/contain; } }
+    .usa-nav__primary button[aria-expanded="false"] span::after {
+      position: absolute;
+      right: 0; }
+      .usa-nav__primary button[aria-expanded="false"] span::after:hover {
+        background-color: buttonText; }
     @media all and (min-width: 64em) {
-      .usa-nav__primary button[aria-expanded="false"] {
-        background-image: url("../img/usa-icons/expand_more.svg"), linear-gradient(transparent, transparent);
-        background-repeat: no-repeat;
-        background-size: 1rem;
-        background-position: right 0.75rem top 53%; } }
+      .usa-nav__primary button[aria-expanded="false"] span::after {
+        background: url("../img/usa-icons/expand_more.svg") no-repeat center/contain;
+        display: inline-block;
+        height: 1rem;
+        width: 1rem;
+        content: "";
+        vertical-align: middle;
+        margin-left: auto; }
+        @supports (mask: url("")) {
+          .usa-nav__primary button[aria-expanded="false"] span::after {
+            background: none;
+            background-color: ButtonText;
+            mask: url("../img/usa-icons/expand_more.svg") no-repeat center/contain; } }
+      .usa-nav__primary button[aria-expanded="false"] span::after {
+        right: 0.75rem; } }
     @media all and (min-width: 64em) {
-      .usa-nav__primary button[aria-expanded="false"]:hover {
-        background-image: url("../img/usa-icons-bg/expand_more--blue-warm-70v.svg"), linear-gradient(transparent, transparent);
-        background-repeat: no-repeat; } }
+      .usa-nav__primary button[aria-expanded="false"]:hover span::after {
+        background-color: #1a4480; } }
+  @media all and (min-width: 64em) and (forced-colors: active) {
+    .usa-nav__primary button[aria-expanded="false"]:hover span::after {
+      background-color: ButtonText; } }
   .usa-nav__primary button[aria-expanded="true"] {
     /* stylelint-disable-line selector-no-qualifying-type */
-    background-image: url("../img/usa-icons/remove.svg"), linear-gradient(transparent, transparent);
-    background-repeat: no-repeat;
-    background-position: right 0 center;
-    background-size: 1.25rem; }
+    background-image: none; }
+    .usa-nav__primary button[aria-expanded="true"] span::after {
+      background: url("../img/usa-icons/remove.svg") no-repeat center/contain;
+      display: inline-block;
+      height: 1.25rem;
+      width: 1.25rem;
+      content: "";
+      vertical-align: middle;
+      margin-left: auto; }
+      @supports (mask: url("")) {
+        .usa-nav__primary button[aria-expanded="true"] span::after {
+          background: none;
+          background-color: ButtonText;
+          mask: url("../img/usa-icons/remove.svg") no-repeat center/contain; } }
+    .usa-nav__primary button[aria-expanded="true"] span::after {
+      position: absolute;
+      right: 0; }
+      @media (forced-colors: active) {
+        .usa-nav__primary button[aria-expanded="true"] span::after {
+          background-color: ButtonText; } }
     @media all and (min-width: 64em) {
       .usa-nav__primary button[aria-expanded="true"] {
-        background-image: url("../img/usa-icons-bg/expand_less--white.svg"), linear-gradient(transparent, transparent);
-        background-repeat: no-repeat;
-        -moz-osx-font-smoothing: grayscale;
-        -webkit-font-smoothing: antialiased;
-        background-size: 1rem;
+        background-image: none;
         background-color: #162e51;
-        background-position: right 0.75rem top 53%;
         color: white; } }
+  @media all and (min-width: 64em) and (min-width: 64em) {
+    .usa-nav__primary button[aria-expanded="true"] span::after {
+      background: url("../img/usa-icons/expand_less.svg") no-repeat center/contain;
+      display: inline-block;
+      height: 1rem;
+      width: 1rem;
+      content: "";
+      vertical-align: middle;
+      margin-left: auto; }
+      @supports (mask: url("")) {
+        .usa-nav__primary button[aria-expanded="true"] span::after {
+          background: none;
+          background-color: ButtonText;
+          mask: url("../img/usa-icons/expand_less.svg") no-repeat center/contain; } }
+    .usa-nav__primary button[aria-expanded="true"] span::after {
+      right: 0.75rem;
+      background-color: white; } }
+  @media all and (min-width: 64em) and (min-width: 64em) and (forced-colors: active) {
+    .usa-nav__primary button[aria-expanded="true"] span::after {
+      background-color: ButtonText; } }
 
 @media all and (min-width: 64em) {
   .usa-nav__primary .usa-accordion__button span {
@@ -8707,7 +9050,8 @@ html.usa-js-loading .usa-nav__submenu.usa-megamenu {
   flex: none;
   float: right;
   margin: -0.75rem -1rem 1rem auto;
-  text-align: center; }
+  text-align: center;
+  background-image: none; }
   .usa-nav__close:visited {
     color: #54278f; }
   .usa-nav__close:hover {
@@ -8729,6 +9073,22 @@ html.usa-js-loading .usa-nav__submenu.usa-megamenu {
     color: #1a4480; }
   .usa-nav__close.usa-button--active {
     color: #162e51; }
+  @media (forced-colors: active) {
+    .usa-nav__close::before {
+      background: url("../img/usa-icons/close.svg") no-repeat center/contain;
+      display: inline-block;
+      height: 1.25rem;
+      width: 1.25rem;
+      content: "";
+      vertical-align: middle;
+      margin-right: auto; }
+      @supports (mask: url("")) {
+        .usa-nav__close::before {
+          background: none;
+          background-color: ButtonText;
+          mask: url("../img/usa-icons/close.svg") no-repeat center/contain; } }
+    .usa-nav__close::before {
+      background-color: buttonText; } }
   .usa-nav__close:hover {
     color: currentColor;
     text-decoration: none; }
@@ -8737,6 +9097,9 @@ html.usa-js-loading .usa-nav__submenu.usa-megamenu {
       display: none; } }
   .usa-nav__close img {
     width: 1.5rem; }
+    @media (forced-colors: active) {
+      .usa-nav__close img {
+        display: none; } }
   .usa-nav__close + * {
     clear: both; }
 
@@ -8822,15 +9185,25 @@ html.usa-js-loading .usa-nav__submenu.usa-megamenu {
   .usa-pagination__button:hover, .usa-pagination__button:focus, .usa-pagination__button:active {
     color: #1a4480;
     border-color: #1a4480; }
+    @media (forced-colors: active) {
+      .usa-pagination__button:hover, .usa-pagination__button:focus, .usa-pagination__button:active {
+        border: 2px solid buttonText; } }
 
 .usa-pagination .usa-current {
   background-color: #1b1b1b;
   border-color: transparent;
   color: white; }
+  @media (forced-colors: active) {
+    .usa-pagination .usa-current {
+      outline: 2px solid buttonText;
+      color: buttonText; } }
   .usa-pagination .usa-current:hover, .usa-pagination .usa-current:focus, .usa-pagination .usa-current:active {
     background-color: #1b1b1b;
     color: white;
     text-decoration: none; }
+    @media (forced-colors: active) {
+      .usa-pagination .usa-current:hover, .usa-pagination .usa-current:focus, .usa-pagination .usa-current:active {
+        color: buttontext; } }
 
 .usa-pagination__overflow {
   align-items: center;
@@ -8953,10 +9326,6 @@ html.usa-js-loading .usa-nav__submenu.usa-megamenu {
   .usa-search [role="search"] {
     display: flex; }
   .usa-search [type="submit"] {
-    background-image: url("../img/usa-icons-bg/search--white.svg"), linear-gradient(transparent, transparent);
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: 1.5rem;
     border-bottom-left-radius: 0;
     border-top-left-radius: 0;
     height: 2rem;
@@ -8967,8 +9336,32 @@ html.usa-js-loading .usa-nav__submenu.usa-megamenu {
       .usa-search [type="submit"] {
         padding-left: 1rem ;
         padding-right: 1rem ;
-        background-image: none;
         width: auto; } }
+    @media (forced-colors: active) {
+      .usa-search [type="submit"] {
+        border: 2px solid transparent; }
+        .usa-search [type="submit"]::before {
+          background: url("../img/usa-icons/search.svg") no-repeat center/contain;
+          display: inline-block;
+          height: 1.5rem;
+          width: 1.5rem;
+          content: "";
+          vertical-align: middle;
+          margin-right: auto; }
+          @supports (mask: url("")) {
+            .usa-search [type="submit"]::before {
+              background: none;
+              background-color: ButtonText;
+              mask: url("../img/usa-icons/search.svg") no-repeat center/contain; } } }
+  @media all and (forced-colors: active) and (min-width: 30em) {
+    .usa-search [type="submit"]::before {
+      content: none; } }
+  @media all and (min-width: 30em) {
+    .usa-search__submit-icon {
+      display: none; } }
+  @media (forced-colors: active) {
+    .usa-search__submit-icon {
+      display: none; } }
 
 @media all and (min-width: 30em) {
   .usa-search--big [type="search"],
@@ -8985,14 +9378,23 @@ html.usa-js-loading .usa-nav__submenu.usa-megamenu {
     height: 3rem;
     width: auto; } }
 
-@media all and (min-width: 30em) {
-  .usa-search--small [type="submit"],
-  .usa-search--small .usa-search__submit {
-    background-image: url("../img/usa-icons-bg/search--white.svg"), linear-gradient(transparent, transparent);
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: 1.5rem;
-    width: 3rem; } }
+@media all and (forced-colors: active) and (min-width: 30em) {
+  .usa-search--small [type="submit"]::before {
+    content: ""; } }
+
+.usa-search--small [type="submit"],
+.usa-search--small .usa-search__submit {
+  padding-left: 0.75rem ;
+  padding-right: 0.75rem ;
+  min-width: 3rem; }
+
+.usa-search--small .usa-search__submit-icon {
+  height: 1.5rem ;
+  width: 1.5rem ;
+  display: block; }
+  @media (forced-colors: active) {
+    .usa-search--small .usa-search__submit-icon {
+      display: none; } }
 
 input[type="search"] {
   /* stylelint-disable-line selector-no-qualifying-type */
@@ -9013,12 +9415,10 @@ input[type="search"] {
   margin: 0; }
 
 .usa-search__submit-text {
-  position: absolute;
-  left: -999em;
-  right: auto; }
+  display: none; }
   @media all and (min-width: 30em) {
     .usa-search__submit-text {
-      position: static; } }
+      display: block; } }
 
 .usa-section {
   padding-bottom: 2rem ;
@@ -9091,6 +9491,9 @@ input[type="search"] {
       top: 0.25rem;
       width: 0.25rem;
       left: 0.25rem; }
+      @media (forced-colors: active) {
+        .usa-sidenav .usa-current::after {
+          background-color: ButtonText; } }
     @media all and (min-width: 40em) {
       .usa-sidenav .usa-current {
         position: relative; }
@@ -9104,6 +9507,9 @@ input[type="search"] {
           top: 0.25rem;
           width: 0.25rem;
           left: 0; } }
+    @media all and (min-width: 40em) and (forced-colors: active) {
+      .usa-sidenav .usa-current::after {
+        background-color: ButtonText; } }
   .grid-container .usa-sidenav {
     margin-left: -1rem ;
     margin-right: -1rem ; }
@@ -9164,7 +9570,7 @@ input[type="search"] {
     border-left-color: #00bde3;
     color: #1b1b1b; }
     .usa-site-alert--info .usa-alert:before {
-      background: url("../img/usa-icons/info.svg") no-repeat center / 2rem 2rem;
+      background: url("../img/usa-icons/info.svg") no-repeat center/contain;
       display: inline-block;
       height: 2rem;
       width: 2rem;
@@ -9178,7 +9584,7 @@ input[type="search"] {
         .usa-site-alert--info .usa-alert:before {
           background: none;
           background-color: #1b1b1b;
-          mask: url("../img/usa-icons/info.svg") no-repeat center / 2rem 2rem; } }
+          mask: url("../img/usa-icons/info.svg") no-repeat center/contain; } }
     .usa-site-alert--info .usa-alert.usa-alert--slim:before {
       background-size: 1.5rem;
       height: 2.5rem;
@@ -9217,7 +9623,7 @@ input[type="search"] {
     border-left-color: #9c3d10;
     color: white; }
     .usa-site-alert--emergency .usa-alert:before {
-      background: url("../img/usa-icons-bg/error--white.svg") no-repeat center / 2rem 2rem;
+      background: url("../img/usa-icons-bg/error--white.svg") no-repeat center/contain;
       display: inline-block;
       height: 2rem;
       width: 2rem;
@@ -9231,7 +9637,7 @@ input[type="search"] {
         .usa-site-alert--emergency .usa-alert:before {
           background: none;
           background-color: white;
-          mask: url("../img/usa-icons/error.svg") no-repeat center / 2rem 2rem; } }
+          mask: url("../img/usa-icons/error.svg") no-repeat center/contain; } }
     .usa-site-alert--emergency .usa-alert.usa-alert--slim:before {
       background-size: 1.5rem;
       height: 2.5rem;
@@ -9613,7 +10019,7 @@ input[type="search"] {
   width: 100%;
   white-space: normal;
   text-align: center;
-  min-width: calc(100vw / 2); }
+  min-width: 50vw; }
 
 .usa-tooltip__body.is-set {
   display: block; }
