@@ -170,3 +170,82 @@ tunnel=$(cf curl /v2/apps/$myapp_guid/env | jq -r '[.system_env_json.VCAP_SERVIC
 // this tells the host app to auto-forward incoming requests on port 5432 to the the db at the `tunnel` path defined above. The db is also happening to listen to port 5432
 cf ssh -N -L 5432:$tunnel smeqa
 ```
+
+=============================================================================================================================
+
+Instructions for targeting the `deployProd.yml` manifest file.
+
+Assumes an application called `smeqa-rr-tool` and a database service named `smeqa-stage-db` per the manifest file.
+
+https://cloud.gov/docs/services/relational-database/
+create the database service, note the name
+
+- https://login.fr.cloud.gov/passcode
+get code, save it for login step
+- cf login -a api.fr.cloud.gov  --sso
+enter code from previous step
+- cf services
+sample output:
+```
+Getting service instances in org sandbox-gsa / space first.last as first.last@gsa.gov...
+
+name             offering   plan         bound apps      last operation     broker       upgrade available
+smeqa-stage-db   aws-rds    small-psql   smeqa-rr-tool   create succeeded   aws-broker   no
+```
+- cf bind-security-group trusted_local_networks_egress sandbox-gsa --space first.last
+sample output:
+```Assigning running security group trusted_local_networks_egress to space first.last in org sandbox-gsa as first.last@gsa.gov...
+OK
+
+TIP: If Dynamic ASG's are enabled, changes will automatically apply for running and staging applications. Otherwise, changes will require an app restart (for running) or restage (for staging) to apply to existing applications.```
+- cf connect-to-service smeqa-rr-tool smeqa-stage-db
+see `deployProd.yml` manifest file for service names to connect.
+sample output for successful connection:
+```Finding the service instance details...
+Setting up SSH tunnel...
+SSH tunnel created.
+Connecting client...
+psql (14.9 (Homebrew), server 15.4)
+WARNING: psql major version 14, server major version 15.
+         Some psql features might not work.
+SSL connection (protocol: TLSv1.2, cipher: ECDHE-RSA-AES256-GCM-SHA384, bits: 256, compression: off)
+Type "help" for help.
+
+cgawsbrokerprod<XYZXYZ>=>
+```
+exit out
+⇒  cf create-service-key smeqa-stage-db smeqa-stage-db-service-key
+Creating service key smeqa-stage-db-service-key for service instance smeqa-stage-db as first.last@gsa.gov...
+OK
+⇒  cf service-key smeqa-stage-db smeqa-stage-db-service-key
+Getting key smeqa-stage-db-service-key for service instance smeqa-stage-db as first.last@gsa.gov...
+
+{
+  "credentials": {
+    "db_name": "<DBNAME>",
+    "host": "cg-aws-broker-prod<XYZXYZ>.<ABCABC>.us-gov-west-1.rds.amazonaws.com",
+    "name": "<DBNAME>",
+    "password": "<DBPASSWORD>",
+    "port": "5432",
+    "uri": "postgres://<DBUSERNAME>:<DBPASSWORD>@cg-aws-broker-prod<XYZXYZ>.<ABCABC>.us-gov-west-1.rds.amazonaws.com:5432/<DBNAME>",
+    "username": "<DBUSERNAME>"
+  }
+}
+⇒  cf enable-ssh smeqa-rr-tool
+Enabling ssh support for app smeqa-rr-tool as first.last@gsa.gov...
+ssh support for app 'smeqa-rr-tool' is already enabled.
+OK
+
+TIP: An app restart may be required for the change to take effect.
+$ cf ssh -L <LOCALPORT>:cg-aws-broker-prod<XYZXYZ>.<ABCABC>.us-gov-west-1.rds.amazonaws.com:5432 smeqa-rr-tool
+This should result in an SSH session on the remote app command line.
+
+Your database should now be available on local port <LOCALPORT> with the host, database, and username and password credentials from the service key step.
+
+- Create the database
+- run the migrations in `/db/migrations` in order
+
+current output:
+```
+{"message":"no pg_hba.conf entry for host \"10.10.2.8\", user \"<DBUSERNAME>\", database \"cgawsbrokerprod<XYZXYZ>\", no encryption"}
+```
