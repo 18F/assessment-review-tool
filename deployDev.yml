@@ -6,7 +6,7 @@ applications:
     env:
       APP_ENV: staging
       NODE_ENV: production
-      OPTIMIZE_MEMORY: "true"
+      OPTIMIZE_MEMORY: true
       TZ: America/New_York
     command: node server.js
     type: nodejs
