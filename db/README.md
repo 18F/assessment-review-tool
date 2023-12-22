@@ -249,3 +249,9 @@ current output:
 ```
 {"message":"no pg_hba.conf entry for host \"10.10.2.8\", user \"<DBUSERNAME>\", database \"cgawsbrokerprod<XYZXYZ>\", no encryption"}
 ```
+
+PostgreSQL 15 requires SSL:
+
+12/22/23
+
+`npm run build:styles`
