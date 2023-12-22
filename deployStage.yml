@@ -10,7 +10,7 @@ applications:
       APP_ENV: staging
       OPTIMIZE_MEMORY: true
       TZ: America/New_York
-      AUTH_CALLBACK_ROOT_URL: https://smeqa-staging.app.cloud.gov
+      AUTH_CALLBACK_ROOT_URL: https://smeqa-staging.app.cloud.gov # keep for staging env
       LOG_LEVEL: trace
       REDIRECT_URI: https://smeqa-staging.app.cloud.gov/login/auth
     command: node server.js
@@ -21,6 +21,6 @@ applications:
     #     tracing:
     #       enable_zipkin: true
     buildpack: nodejs_buildpack
-    stack: cflinuxfs3
+    stack: cflinuxfs4
     services:
       - smeqa-stage-db
