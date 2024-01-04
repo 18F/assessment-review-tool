@@ -7,9 +7,9 @@ applications:
     #health-check-http-endpoint: /api/admin/health
     env:
       APP_ENV: production # this is used to point to different APIs/DBs/etc
-      AUTH_CALLBACK_URL_ROOT: https://smeqa-rr-tool.app.cloud.gov
-      REDIRECT_URI: https://smeqa-rr-tool.app.cloud.gov/login/auth
-      ISSUER_DISCOVER: https://secure.login.gov
+      AUTH_CALLBACK_URL_ROOT: https://smeqa-rr-tool.app.cloud.gov # for login.gov
+      REDIRECT_URI: https://smeqa-rr-tool.app.cloud.gov/login/auth # for login.gov
+      ISSUER_DISCOVER: https://secure.login.gov # 
       NODE_ENV: production
       OPTIMIZE_MEMORY: true
       TZ: America/New_York
@@ -28,4 +28,4 @@ applications:
     buildpack: nodejs_buildpack
     stack: cflinuxfs4
     services:
-      - smeqa-stage-db
+      - smeqa-db
