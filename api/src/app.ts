@@ -127,7 +127,7 @@ export default class App {
           return;
         }
         const keys = Object.keys(value.route.methods);
-        logger.info(`Registered Route at [${keys.join(',')}] ${value.route.path}`);
+        // logger.info(`Registered Route at [${keys.join(',')}] ${value.route.path}`);
       });
     });
     logger.info(`Registered Route for 404`);
