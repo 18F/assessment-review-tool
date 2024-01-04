@@ -16,7 +16,7 @@ async function generateStrategy() {
 
   logger.debug('Assigning key and issuer');
   const key = await jose.JWK.asKey(secretKey, 'pem');
-  logger.debug('Key success');
+  logger.debug(`openIdConfig.issuerDiscover: ${openIdConfig.issuerDiscover}`);
   logger.debug('Issuer discovery for ${openIdConfig.issuerDiscover)');
   const issuer = await Issuer.discover(openIdConfig.issuerDiscover);
   logger.debug('key and issuer Assigned');
