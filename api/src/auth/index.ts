@@ -46,10 +46,8 @@ passport.deserializeUser(async (id: string, done) => {
 
 export default async function authSetup() {
   try {
-    logger.info('INFO: Calling generateStrategy');
     logger.debug('DEBUG: Calling generateStrategy');
     const oidcLoa1Strat = await generateStrategy();
-    logger.info('INFO: Returning from generateStrategy');
     logger.debug('DEBUG: Returning from generateStrategy');
     passport.use('oidc-loa-1', oidcLoa1Strat);
   } catch (err) {
