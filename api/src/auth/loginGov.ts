@@ -11,13 +11,17 @@ import UserService from '../services/users.service';
 
 const logoutObject: { issuer: Issuer<Client> | null } = { issuer: null };
 async function generateStrategy() {
-  logger.debug('DEBUG: Running generateStrategy');
   const userService = new UserService();
   const secretKey = openIdConfig.secretKey;
-  logger.debug('DEBUG: Assigning key and issuer');
-  const [key, issuer] = await Promise.all([jose.JWK.asKey(secretKey, 'pem'), Issuer.discover(openIdConfig.issuerDiscover)]);
-  logger.debug('DEBUG: key and issuer Assigned');
 
+  logger.debug('Assigning key and issuer');
+  const key = await jose.JWK.asKey(secretKey, 'pem');
+  logger.debug('Key success');
+  logger.debug('Issuer discovery for ${openIdConfig.issuerDiscover)');
+  const issuer = await Issuer.discover(openIdConfig.issuerDiscover);
+  logger.debug('key and issuer Assigned');
+
+  // const [key, issuer] = await Promise.all([jose.JWK.asKey(secretKey, 'pem'), Issuer.discover(openIdConfig.issuerDiscover)]);
   logger.info(`Key successfully read`);
 
   logoutObject.issuer = issuer;
